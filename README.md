@@ -6,4 +6,5 @@ between the estimated and received sequences.<br>
 •In a communication channel convolutionally encoded bit streams are de-
 coded through this algorithm using trellis diagram<br>
 •Here the focus is mainly on decoding the data. Data recovering in case of
-error is not a part of Viterbi algorithm
+error is not a part of Viterbi algorithm<br>
+•Applied this algorithm on an image dataset. 
