@@ -1,5 +1,7 @@
 I = imread('blackhole.jpg');
-% imshow(I);
+figure
+imshow(I);
+%%
 B = dec2bin(I);
 C = reshape(B',1,numel(B));
 N=size(C);
@@ -36,3 +38,31 @@ count=count+sum(bn==decoded_b);
 final_bn=[final_bn decoded_b];
 size(final_bn)
 count/N
+%%
+final_bits=zeros(1,N);
+final_data=blanks(N);
+for i=1:N
+    if final_bn(i)==0
+        final_data(i)='0';
+    else
+        final_data(i)='1';
+    end
+end
+Final=reshape(final_data,8,2359296);
+Final1=Final';
+X=bin2dec(Final1);
+A=zeros(768,1024,3,'uint8');
+l=0;
+m=768;
+for i=1:3
+    for j=1:1024
+        for k=1:768
+            A(k,j,i)=X(m*l+k);
+        end
+        l=l+1;
+    end
+end
+
+ imwrite(A,'newimage.jpg','jpg');
+ imfinfo('newimage.jpg');
+ image(A);           
